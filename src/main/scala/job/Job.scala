@@ -16,9 +16,9 @@ class Job extends SessionStarter {
 
       import sparkSession.implicits._
 
-      ////////////////////////////////////////
-      //ETL using dataset API //
-      ///////////////////////////////////////
+      /**
+       * ETL using Dataset API
+       */
 
       val df3 = sparkSession.read
         .format("csv")
@@ -47,9 +47,9 @@ class Job extends SessionStarter {
       df6.show()
       df7.show()
 
-      ////////////////////////////////////////
-      //ETL using SQL //
-      ///////////////////////////////////////
+      /**
+       * ETL using SQL
+       */
 
       val df8 = sparkSession.read
         .format("csv")
@@ -81,9 +81,9 @@ class Job extends SessionStarter {
          group by gender""").show
 
 
-      ////////////////////////////////////////
-      //Read avro //
-      ///////////////////////////////////////
+      /**
+       * Read Avro
+       */
       val avrodf = sparkSession.read
         .format("avro")
         .option("mode","failfast")
@@ -92,9 +92,9 @@ class Job extends SessionStarter {
         .load("./src/main/resources/data/tweet.avro")
       avrodf.show()
 
-      ////////////////////////////////////////
-      //Read xml //
-      ///////////////////////////////////////
+      /**
+       *Read XML
+       */
       val xmldf = sparkSession.read
         .format("com.databricks.spark.xml")
         .option("mode","failfast")
@@ -102,9 +102,9 @@ class Job extends SessionStarter {
 
       xmldf.show()
 
-      ///////////////////////
-      ///// txt ////////////
-      /////////////////////
+      /**
+       * Read txt
+       */
 
       val txtdf = sparkSession.read.textFile("./src/main/resources/data/wordcount.txt")
       val a=txtdf.count()
@@ -117,3 +117,4 @@ class Job extends SessionStarter {
     }
 
 }
+
